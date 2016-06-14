@@ -1,0 +1,76 @@
+<div ng-controller="judgeController">
+    Number of judges: <span class="label label-info"> {{ judges.length }} </span>
+    <form name="addRow" class="indent10">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search judges" ng-model="searchJudge">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary btn-primary btn-add" ng-click="add()" data-toggle="modal" data-target=".bs-example-modal-lg">Add judge</button>
+              </span>
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title text-center">Add Judge</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="addRow" class="add-form">
+                                    <input type="text" class="form-control indent10" name="surname" placeholder="Surname" ng-model="formData.surname">
+                                    <input type="text" class="form-control indent10" name="name" placeholder="Name" ng-model="formData.name">
+                                    <input type="text" class="form-control indent10" name="lastname" placeholder="Lastname" ng-model="formData.lastname">
+                                    <div class="modal-footer">
+                                        <button type="submit" name="createJudge" class="btn btn-success modal-btn" ng-click="addRow.$valid && createJudge(judge)"><i class="fa fa-plus"></i>
+                                        Add judge
+                                    </button>
+                                        <button type="submit" name="cancel" class="btn btn-danger modal-btn" data-dismiss="modal"><i class="fa fa-times"></i>
+                                        Cancel
+                                    </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table table-view table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2">Number</th>
+                <th class="col-md-2">Password</th>
+                <th class="col-md-2">Surname</th>
+                <th class="col-md-2">Name</th>
+                <th class="col-md-2">Lastname</th>
+                <th class="col-md-2">Edit</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="judge in judges | filter:searchJudge">
+            <tr ng-if="judge != activeJudge">
+                <td>{{judge.number}}</td>
+                <td>{{judge.password}}</td>
+                <td>{{judge.surname}}</td>
+                <td>{{judge.name}}</td>
+                <td>{{judge.lastname}}</td>
+                <td><button type="submit" class="btn btn-info" ng-click="edit(judge)"><i
+                        class="fa fa-pencil-square-o"></i> Edit</button>
+                    <button type="submit" class="btn btn-danger" ng-click="deleteJudge(judge._id)"><i class="fa fa-times"></i> Delete</button></td>
+            </tr>
+            <tr ng-if='judge == activeJudge'>
+                <td><input class="form-control" type="text" ng-model="editData.number" readonly></td>
+                <td><input class="form-control" type="text" ng-model="editData.password" readonly></td>                
+                <td><input class="form-control" type="text" ng-model="editData.surname"></td>
+                <td><input class="form-control" type="text" ng-model="editData.name"></td>                
+                <td><input class="form-control" type="text" ng-model="editData.lastname"></td>
+                </select>
+                <td class="vertical-center">
+                    <a class='btn btn-info' href='' ng-click='update(judge._id)'><i class="fa fa-refresh"></i>
+                    Update</a>
+                    <a class='btn btn-danger' href='' ng-click='cancel()'><i class="fa fa-undo"></i> Cancel</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,14 @@
+{
+  "name": "fitnessApp",
+  "main": "server.js",
+  "dependencies": {
+    "angular-ui-router-styles": "0.0.6",
+    "angular-ui-sortable": "^0.14.0",
+    "body-parser": "~1.0.0",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "~1.0.0",
+    "express": "~4.0.0",
+    "method-override": "~1.0.0",
+    "mongoose": "~3.8.1"
+  }
+}

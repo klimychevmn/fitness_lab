@@ -1,0 +1,14 @@
+<div>
+	<div class="container" ng-controller="resultController">
+		<h2>Result table</h2>
+		<select class="form-control indent10" ng-model="searchCategory">
+			<option value="" disabled selected>Choose category</option>
+			<option ng-repeat="category in categories">{{category.name}}</option>
+		</select>
+		<ul ui-sortable ng-model="competitors">
+			<li class="result-list" ng-repeat="competitor in competitors | filter: searchCategory">{{ competitor.number }} : {{competitor.surname}} {{competitor.name}} занял {{competitor.index}} место.</li>
+		</ul>
+		<button class="btn btn-primary btn-lg" ng-click="save(competitors)">Save</button>
+		<button class="btn btn-warning btn-lg" ng-click="sort(competitors)">Sort</button>
+	</div>
+</div>

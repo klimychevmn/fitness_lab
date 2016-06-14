@@ -1,0 +1,89 @@
+* {
+	/*font-family: 'Lato', 'PT Sans', sans-serif;*/
+}
+
+.navbar { 
+	border-radius: 0; 
+}
+
+.table-view {
+	margin-top: 20px;
+}
+
+.label-info {
+	font-size: 12pt;
+}
+
+.first-letter::first-letter {
+	text-transform: capitalize;
+}
+
+.first-letter-each-word {
+	text-transform: capitalize;
+}
+
+/* searching form*/
+.indent10 {
+	margin-top: 10px;
+}
+
+select:not(:checked) {
+	color: #808080;
+}
+
+select option:not(:disabled) {
+	color: #000000;
+}
+
+.modal-body {
+	padding: 10px 50px 40px 50px;
+}
+
+.table tbody>tr>td.vertical-center {
+	vertical-align: middle;
+}
+
+.modal-btn {
+	margin-top: 30px;
+}
+
+.modal-footer {
+	text-align: center;
+}
+
+.btn-add {
+	margin-left: 10px;
+}
+
+.result-list {
+	cursor: pointer;
+	list-style-type: none;
+	border: 1px solid #555;
+	margin-top: 10px;
+	width: 300px;
+	padding: 5px;
+	border-radius: 15px;
+	text-align: center;
+	-webkit-user-select: none;
+}
+
+.btn:focus {
+	outline: none;
+}
+
+.yoba {
+	position: absolute;
+	bottom: -120px;
+	right: 100px;	
+	transition: bottom .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.yoba:hover {
+	bottom: 10px;
+	transition: bottom .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.yoba-img {
+	width: 150px;
+	height: 150px;	
+}

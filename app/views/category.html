@@ -1,0 +1,100 @@
+<div ng-controller="categoryController">
+    Number of categories: <span class="label label-info"> {{ categories.length }} </span>
+    <form name="addRow" class="indent10">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search category" ng-model="searchCategory">
+                <span class="input-group-btn">
+                        <button class="btn btn-secondary btn-primary btn-add" ng-click="add()" data-toggle="modal"
+                                data-target=".bs-example-modal-lg">Add category</button>
+                    </span>
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title text-center">Add Category</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="addRow" class="add-form">
+                                    <!-- TODO unique record validation-->
+                                    <input name="name" type="text" class="form-control indent10" placeholder="Category name" ng-model="formData.name" required>
+                                    <input name="competitors" type="number" class="form-control indent10" placeholder="Number of competitors" ng-model="formData.competitors" required>
+                                    <select name="stage" class="form-control indent10" ng-model="formData.stage" required>
+                                        <option value="" disabled> Number of Stage</option>
+                                        <option> 1</option>
+                                        <option> 2</option>
+                                    </select>
+                                    <input type="number" class="form-control indent10" name="n" ng-model="formData.n" max="formData.competitors" placeholder="How many competitors go through the second round?"
+                                        required>
+                                    <div class="modal-footer">
+                                        <button type="submit" name="submit" class="btn btn-success modal-btn" ng-click="addRow.$valid && createCategory()"><i class="fa fa-plus"></i>
+                                            Add category
+                                        </button>
+                                        <button type="submit" name="submit" class="btn btn-danger modal-btn" data-dismiss="modal"><i class="fa fa-times"></i>
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table table-view table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2">Name</th>
+                <th class="col-md-2">Competitors</th>
+                <th class="col-md-2">Stage</th>
+                <th class="col-md-2">N</th>
+                <th class="col-md-2">Edit</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="category in categories | filter:searchCategory ">
+            <tr ng-if="category != activeCategory">
+                <td class="first-letter">{{category.name}}</td>
+                <td>{{category.competitors}}</td>
+                <td>{{category.stage}}</td>
+                <td>{{category.n}}</td>
+                <td>
+                    <button type="submit" class="btn btn-info" ng-click="edit(category)"><i
+                        class="fa fa-pencil-square-o"></i> Edit
+                </button>
+                    <button type="submit" class="btn btn-danger" ng-click="deleteCategory(category._id)"><i
+                        class="fa fa-times"></i> Delete
+                </button>
+                </td>
+            </tr>
+            <tr ng-if='category == activeCategory'>
+                <td>
+                    <label for="edit-name">Edit name of category</label>
+                    <input name="edit-name" class="form-control first-letter" type="text" ng-model="editData.name">
+                </td>
+                <td>
+                    <label for="edit-number">Edit number of competitors</label>
+                    <input name="edit-number" class="form-control" type="number" ng-model="editData.competitors">
+                </td>
+                <td>
+                    <label for="n">Edit number of N</label>
+                    <input name="n" class="form-control" type="number" ng-model="editData.n">                    
+                </td>
+                <td>
+                    <label for="stage">Edit number of stage</label>
+                    <select multiple name="stage" class="form-control" ng-model="editData.stage" required>
+                    <option value="" disabled> Please Choose number of Stage</option>
+                    <option> 1</option>
+                    <option> 2</option>
+                </select>
+                </td>
+                <td class="vertical-center">
+                    <a class='btn btn-info' ng-click='update(category._id)'><i class="fa fa-refresh"></i> Update</a>
+                    <a class='btn btn-danger' ng-click='cancel()'><i class="fa fa-undo"></i> Cancel</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

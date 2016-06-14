@@ -1,0 +1,104 @@
+<div ng-controller="competitorController">
+    Number of competitors: <span class="label label-info"> {{ competitors.length }} </span>
+    <form name="addRow" class="indent10">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search competitors" ng-model="searchCompetitor">
+              <span class="input-group-btn">
+                  <button class="btn btn-secondary btn-primary btn-add" ng-click="add()" data-toggle="modal" data-target=".bs-example-modal-lg">Add competitor</button>
+              </span>
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title text-center">Add Competitor</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="addRow" class="add-form">
+                                    <input type="number" class="form-control indent10" name="id" placeholder="Competitor ID"
+                                           ng-model="formData.number" required="required">
+                                    <input type="text" class="form-control indent10" name="surname"
+                                           placeholder="Competitor surname" ng-model="formData.surname" required>
+                                    <input type="text" class="form-control indent10" name="name" placeholder="Competitor name"
+                                           ng-model="formData.name" required>
+                                    <input type="text" class="form-control indent10" name="lastname"
+                                           placeholder="Competitor lastname" ng-model="formData.lastname">
+                                    <input type="date" class="form-control indent10" name="birthday" min="1900-01-01"
+                                           max="{{currentDate}}" ng-model="formData.birthday" required>
+                                    <select multiple class="form-control indent10" name="category" ng-model="formData.category" required>
+                                        <option disabled>Ctrl to sel. > 0</option>
+                                        <option ng-repeat="category in categories">{{category.name}}</option>
+                                    </select>
+                                    <div class="modal-footer">
+                                    <button type="submit" name="submit" class="btn btn-success modal-btn"
+                                            ng-click="addRow.$valid && createCompetitor()"><i class="fa fa-plus"></i>
+                                        Add competitor
+                                    </button>
+                                    <button type="submit" name="submit" class="btn btn-danger modal-btn"
+                                            data-dismiss="modal"><i class="fa fa-times"></i>
+                                        Cancel
+                                    </button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table tableView">
+        <thead>
+        <tr>
+            <!--<th class="cold-md-4">index</th>-->
+            <th class="col-md-1">Number</th>
+            <th class="col-md-2">Surname</th>
+            <th class="col-md-1">Name</th>
+            <th class="col-md-1">Lastname</th>
+            <th class="col-md-2">Birthday</th>
+            <th class="col-md-2">Category</th>
+            <th class="col-md-3">Edit</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="competitor in competitors | filter: searchCompetitor">
+        <tr ng-if="competitor != activeCompetitor">
+            <td>{{competitor.number}}</td>
+            <td class="first-letter">{{competitor.surname}}</td>
+            <td class="first-letter">{{competitor.name}}</td>
+            <td class="first-letter">{{competitor.lastname}}</td>
+            <td>{{competitor.birthday | date:"dd/MM/yyyy"}}</td>
+            <td class="first-letter-each-word">{{competitor.category}}</td>
+            <td>
+                <button type="submit" class="btn btn-info" ng-click="edit(competitor)"><i
+                        class="fa fa-pencil-square-o"></i> Edit
+                </button>
+                <button type="submit" class="btn btn-danger" ng-click="deleteCompetitor(competitor._id)"><i
+                        class="fa fa-times"></i> Delete
+                </button>
+            </td>
+        </tr>
+        <tr ng-if='competitor == activeCompetitor'>
+            <!--for debugging index-->
+            <!--<td><input class="form-control" type="number" ng-model="editData.index"></td>-->
+            <!---->
+            <td><input class="form-control" type="number" ng-model="editData.number"></td>
+            <td><input class="form-control" type="text" ng-model="editData.surname"></td>
+            <td><input class="form-control" type="text" ng-model="editData.name"></td>
+            <td><input class="form-control" type="text" ng-model="editData.lastname"></td>
+            <td><input class="form-control" type="date" ng-model="editData.birthday"></td>
+            <td><select multiple class="form-control" id="sel2" ng-model="editData.category" required>
+                <option disabled>Ctrl to sel. > 0</option>
+                <option ng-repeat="category in categories">{{category.name}}</option>
+            </select>
+            <td class="vertical-center">
+                <a class='btn btn-info' href='' ng-click='update(competitor._id)'><i class="fa fa-refresh"></i>
+                    Update</a>
+                <a class='btn btn-danger' href='' ng-click='cancel()'><i class="fa fa-undo"></i> Cancel</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
