@@ -1,4 +1,4 @@
-routerApp.controller('resultController', function ($q, $scope, $http) {
+fitnessApp.controller('resultController', function ($q, $scope, $http) {
 
     $scope.formData = {};
 

@@ -1,5 +1,4 @@
-var routerApp = angular.module('fitnessApp', ['ui.sortable', 'ui.router']);
-routerApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+fitnessApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 	$urlRouterProvider.otherwise('/home');
 	$stateProvider

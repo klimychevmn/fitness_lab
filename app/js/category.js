@@ -1,4 +1,4 @@
-routerApp.controller('categoryController', function($scope, $http) {
+fitnessApp.controller('categoryController', function($scope, $http) {
 
     $scope.formData = {};
 
@@ -28,6 +28,7 @@ routerApp.controller('categoryController', function($scope, $http) {
         $scope.toggle = !$scope.toggle;
         $scope.editData.name = category.name;
         $scope.editData.competitors = category.competitors;
+        $scope.editData.n = category.n;
     };
 
     $scope.update = function(id) {

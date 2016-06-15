@@ -1,4 +1,4 @@
-routerApp.controller('judgeController', function ($scope, $http) {
+fitnessApp.controller('judgeController', function ($scope, $http) {
 
     $scope.formData = {};
 

@@ -1,3 +1,2 @@
-routerApp.controller('homeController', function ($scope) {
-	$scope.message = 'hommie';
+fitnessApp.controller('homeController', function ($scope) {
 });

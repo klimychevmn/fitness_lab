@@ -130,6 +130,7 @@ app.post('/api/categories', function (req, res) {
         name: req.body.name,
         competitors: req.body.competitors,
         stage: req.body.stage,
+        n: req.body.n,
         done: false
     }, function (err, category) {
         if (err)
@@ -201,28 +202,6 @@ app.post('/api/competitors', function (req, res) {
         });
     });
 });
-
-// // // todo competitors result table
-// app.put('/api/competitors/:competitor_id', function(req, res) {
-//     Competitor.update({_id: req.params.competitor_id},req.body.index, function(err, res) {
-//         Competitor.find(function(err, competitors) {
-//             if(err)
-//                 res.send(err)
-//             res.json(competitors);
-//             console.log('Ya vse sdelal')
-//         });
-//     });
-// });
-// app.put('/api/competitors/', function(req, res) {
-//     Competitor.update({order : req.params.order}, req.body , function(err, res) {
-//         Competitor.find(function(err, competitor) {
-//             if(err)
-//                 res.send(err)
-//             res.json(competitor);
-//             console.log('Server otpravil obnovlenni poryadok');
-//         });
-//     });
-// });
 
 // delete a competitor
 app.delete('/api/competitors/:competitor_id', function (req, res) {

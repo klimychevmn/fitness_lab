@@ -1,6 +1,6 @@
 // competitor Controller
 
-routerApp.controller('competitorController', function ($scope, $http, $filter) {
+fitnessApp.controller('competitorController', function ($scope, $http, $filter) {
 
     $scope.currentDate = new Date();
 

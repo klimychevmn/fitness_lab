@@ -1,4 +1,4 @@
-routerApp.controller('protocolController', function ($scope, $http) {
+fitnessApp.controller('protocolController', function ($scope, $http) {
 
     $http.get('/api/categories')
         .success(function (data) {
