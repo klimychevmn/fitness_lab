@@ -1,3 +1,8 @@
 <div class="container" ng-controller="loginController">
-    <h1>{{message}}</h1>
+    <div ng-show="warning">
+        Authorization denied!
+    </div>
+    <input class="form-control indent10 login-input" type="text" ng-model="username" placeholder="Username">
+    <input class="form-control indent10 login-input" type="password" ng-model="password" placeholder="Password">
+    <button class="btn btn-default indent10" ng-click="login()" autofocus>Login</button>
 </div>

@@ -11,7 +11,7 @@ fitnessApp.controller('competitorController', function ($scope, $http, $filter) 
     $http.get('/api/competitors')
         .success(function (data) {
             $scope.competitors = data;
-            //console.log(data);
+            console.log(data);
         })
         .error(function (data) {
             //console.log('Error: ' + data);
@@ -20,7 +20,7 @@ fitnessApp.controller('competitorController', function ($scope, $http, $filter) 
     $http.get('/api/categories')
         .success(function (data) {
             $scope.categories = data;
-            //console.log(data);
+            // console.log(data);
         })
         .error(function (data) {
             //console.log('Error: ' + data);

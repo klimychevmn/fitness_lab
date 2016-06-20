@@ -60,7 +60,7 @@ select option:not(:disabled) {
 	list-style-type: none;
 	border: 1px solid #555;
 	margin-top: 10px;
-	width: 300px;
+	width: 500px;
 	padding: 5px;
 	border-radius: 15px;
 	text-align: center;
@@ -71,19 +71,6 @@ select option:not(:disabled) {
 	outline: none;
 }
 
-.yoba {
-	position: absolute;
-	bottom: -120px;
-	right: 100px;	
-	transition: bottom .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.yoba:hover {
-	bottom: 10px;
-	transition: bottom .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.yoba-img {
-	width: 150px;
-	height: 150px;	
+.login-input {
+	width: 300px;
 }

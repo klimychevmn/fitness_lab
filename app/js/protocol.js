@@ -8,6 +8,15 @@ fitnessApp.controller('protocolController', function ($scope, $http) {
             console.log('Error: ' + data);
         });
 
+    $http.get('/api/judges')
+        .success(function (data) {
+            $scope.judges = data;
+            // console.log(data);
+        })
+        .error(function (data) {
+            console.log('Error: ' + data);
+        });
+
 
     $http.get('/api/competitors')
         .success(function (data) {

@@ -3,16 +3,18 @@
         <option value="" disabled selected>Choose category</option>
         <option ng-repeat="category in categories">{{category.name}}</option>
     </select>
-    <table class="table table-hover indent10">
+    <table class="table table-hover indent10" ng-show="searchCategory">
         <thead>
             <tr>
                 <th>ФИО, № спортсмена</th>
-                <th>Оценка судьи №1</th>
+                <th ng-repeat="judge in judges">Оценка судьи {{judge.lastname}}</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="competitor in competitors | filter: searchCategory">
-                <td>{{competitor.name}} {{competitor.number}}</td>
+                <td>{{competitor.surname}} {{competitor.name}} {{competitor.lastname}}
+                    <br> {{competitor.number}}
+                </td>
                 <td>{{competitor.index}}</td>
             </tr>
         </tbody>
