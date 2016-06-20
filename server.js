@@ -47,9 +47,9 @@ var Judge = mongoose.model('Judge', {
 });
 
 var Result = mongoose.model('Result', {
-    idCompetitor = Number,
-    idJudge = Number,
-    result = Number
+    idCompetitor : Number,
+    idJudge : Number,
+    result : Number
 });
 
 // // routes ======================================================================
